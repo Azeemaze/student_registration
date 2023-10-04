@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+                margin : 0;
+                padding : 0;
+                background : <img src="{% static 'images.jpg' %}">;
+                background-size : cover;
+                }
+    </style>
+    <script type="text/javascript">
+    	function validate(){
+    		if(document.myform.Name.value==""){
+    			alert("please provide your name");
+    			document.myform.Name.focus();
+    			return false;
+    		}
+
+    		if(document.myform.Email.value ==""){
+    			alert("Please provide your Email");
+    			document.myform.Email.focus();
+    			return false;
+    		}
+    		if(document.myform.DOB.value ==""){
+    			alert("Please provide your date of Birth");
+    			document.myform.DOB.focus();
+    			return false;
+    		}
+    	}
+    </script>
+</head>
+<body>
+<div class="title"><h1>Student Registration Form</h1></div>
+<form method="post" action="" name="myform" onsubmit="return validate()" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Student Resgistration</legend>
+    <label>Name</label>
+    <input type="text" name="Name"><br>
+    <label>Email</label>
+    <input type="text" name="Email"><br>
+    <label>Hobbies</label>
+    <select name="Hobbies">
+        <option value="Select a value">Select a value</option>
+        <option value="Cycling">Cycling</option>
+        <option value="Musiq">Musiq</option>
+        <option value="Sports">Sports</option>
+    </select><br>
+    <label>Date of Birth</label>
+    <input type="date" name="DOB"><br>
+    <input type="submit" name="below18" value="I Am Below 18">
+    <input type="submit" name="above18" value="I AM Above 18">
+        </fieldset>
+</form>
+
+</body>
+</html>
